@@ -4,6 +4,7 @@ import 'package:smartdust/models/month_type.dart';
 import 'package:smartdust/models/sensor_type.dart';
 import 'package:smartdust/themes/colors.dart';
 import 'package:smartdust/widgets/default_appbar.dart';
+import 'package:smartdust/widgets/node_card.dart';
 
 class TodayScreen extends StatefulWidget {
   static String id = 'analysis-screen';
@@ -106,96 +107,6 @@ class _TodayScreenState extends State<TodayScreen> {
           ),
         ),
       ),
-    );
-  }
-}
-
-class NodeCard extends StatelessWidget {
-  final String name;
-  final int temparature;
-  final int moisture;
-  final int sunlight;
-
-  const NodeCard({
-    super.key,
-    required this.name,
-    required this.temparature,
-    required this.moisture,
-    required this.sunlight,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
-      width: double.infinity,
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(16.0),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withValues(alpha: 0.1),
-            blurRadius: 6,
-            offset: const Offset(0, 2),
-          ),
-        ],
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            name,
-            style: TextStyle(
-              fontSize: 24.0,
-              color: AppColors.gray900,
-              fontFamily: 'Pretendard',
-              fontWeight: FontWeight.w500,
-            ),
-          ),
-          SizedBox(height: 40.0),
-          DataWidget(data: temparature, type: SensorType.temperature),
-          DataWidget(data: moisture, type: SensorType.moisture),
-          DataWidget(data: sunlight, type: SensorType.sunlight),
-        ],
-      ),
-    );
-  }
-}
-
-class DataWidget extends StatelessWidget {
-  final SensorType type;
-  final int data;
-
-  const DataWidget({super.key, required this.type, required this.data});
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.end,
-      crossAxisAlignment: CrossAxisAlignment.baseline,
-      textBaseline: TextBaseline.alphabetic,
-      children: [
-        SizedBox(width: 4.0),
-        Text(
-          type.label,
-          style: TextStyle(
-            fontSize: 16.0,
-            color: AppColors.gray900,
-            fontFamily: 'Pretendard',
-            fontWeight: FontWeight.w400,
-          ),
-        ),
-        SizedBox(width: 8.0),
-        Text(
-          '$data${type.unit}',
-          style: TextStyle(
-            fontSize: 40.0,
-            color: AppColors.green300,
-            fontFamily: 'Pretendard',
-            fontWeight: FontWeight.w600,
-          ),
-        ),
-      ],
     );
   }
 }
