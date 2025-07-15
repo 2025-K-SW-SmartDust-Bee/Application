@@ -1,22 +1,21 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:smartdust/models/month_type.dart';
+import 'package:smartdust/models/sensor_type.dart';
+import 'package:smartdust/themes/colors.dart';
 import 'package:smartdust/widgets/default_appbar.dart';
 import 'package:smartdust/widgets/default_button.dart';
 import 'package:smartdust/widgets/line_chart_widget.dart';
 
-enum SensorType { temperature, humidity, illuminance }
-
-enum MonthType { june, july, august }
-
-class HomeScreen extends StatefulWidget {
-  static String id = 'home-screen';
-  const HomeScreen({super.key});
+class AnalysisScreen extends StatefulWidget {
+  static String id = 'analysis-screen';
+  const AnalysisScreen({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<AnalysisScreen> createState() => _AnalysisScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _AnalysisScreenState extends State<AnalysisScreen> {
   final List<FlSpot> avgTempeSpots = [
     FlSpot(0, 28), // Mon
     FlSpot(1, 30), // Tue
@@ -65,8 +64,8 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: DefaultAppBar(title: 'Data Analysis'),
+      backgroundColor: AppColors.gray25,
+      appBar: DefaultAppBar(title: 'Data Analysis', isHome: true),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 20.0),
         child: SingleChildScrollView(
@@ -84,15 +83,15 @@ class _HomeScreenState extends State<HomeScreen> {
                     isEnable: selectedSensor == SensorType.temperature,
                   ),
                   DefaultButton(
-                    content: 'Humidity',
-                    onPressed: () => _selectSensor(SensorType.humidity),
+                    content: 'Moisture',
+                    onPressed: () => _selectSensor(SensorType.moisture),
                     width: 120,
-                    isEnable: selectedSensor == SensorType.humidity,
+                    isEnable: selectedSensor == SensorType.moisture,
                   ),
                   DefaultButton(
-                    content: 'Illuminance',
-                    onPressed: () => _selectSensor(SensorType.illuminance),
-                    isEnable: selectedSensor == SensorType.illuminance,
+                    content: 'Sunlight',
+                    onPressed: () => _selectSensor(SensorType.sunlight),
+                    isEnable: selectedSensor == SensorType.sunlight,
                     width: 120,
                   ),
                 ],

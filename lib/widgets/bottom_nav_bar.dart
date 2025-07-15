@@ -23,35 +23,33 @@ class BottomNavBar extends StatelessWidget {
         decoration: BoxDecoration(
           border: Border(top: BorderSide(color: AppColors.gray50, width: 1)),
         ),
-        child: Padding(
-          padding: const EdgeInsets.only(top: 8.0),
-          child: BottomNavigationBar(
-            currentIndex: currentIndex,
-            onTap: onTap,
-            type: BottomNavigationBarType.fixed,
-            backgroundColor: Colors.white,
-            selectedItemColor: AppColors.gray800,
-            selectedLabelStyle: TextStyle(
-              fontSize: 12.0,
-              fontWeight: FontWeight.w500,
-              color: AppColors.gray800,
-            ),
-            unselectedLabelStyle: TextStyle(
-              fontSize: 12.0,
-              fontWeight: FontWeight.w500,
-              color: AppColors.gray300,
-            ),
-            items: [
-              BottomNavigationBarItem(
-                icon: FaIcon(FontAwesomeIcons.mountainSun),
-                label: 'Today',
-              ),
-              BottomNavigationBarItem(
-                icon: FaIcon(FontAwesomeIcons.chartSimple),
-                label: 'Analysis',
-              ),
-            ],
+        child: BottomNavigationBar(
+          elevation: 0,
+          currentIndex: currentIndex,
+          onTap: onTap,
+          type: BottomNavigationBarType.fixed,
+          backgroundColor: Colors.white,
+          selectedItemColor: AppColors.gray800,
+          selectedLabelStyle: TextStyle(
+            fontSize: 12.0,
+            fontWeight: FontWeight.w500,
+            color: AppColors.gray800,
           ),
+          unselectedLabelStyle: TextStyle(
+            fontSize: 12.0,
+            fontWeight: FontWeight.w500,
+            color: AppColors.gray300,
+          ),
+          items: [
+            BottomNavigationBarItem(
+              icon: FaIcon(FontAwesomeIcons.mountainSun),
+              label: 'Today',
+            ),
+            BottomNavigationBarItem(
+              icon: FaIcon(FontAwesomeIcons.chartSimple),
+              label: 'Analysis',
+            ),
+          ],
         ),
       ),
     );
