@@ -1,7 +1,10 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:smartdust/components/data_component.dart';
 import 'package:smartdust/models/month_type.dart';
 import 'package:smartdust/models/sensor_type.dart';
+import 'package:smartdust/screens/realtime_data_screen.dart';
 import 'package:smartdust/themes/colors.dart';
 import 'package:smartdust/widgets/default_appbar.dart';
 import 'package:smartdust/widgets/node_card_widget.dart';
@@ -70,6 +73,59 @@ class _TodayScreenState extends State<TodayScreen> {
                 ),
               ),
               SizedBox(height: 20.0),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => RealtimeDataScreen(nodeName: 'Average'),
+                    ),
+                  );
+                },
+                child: Container(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 20.0,
+                    vertical: 20.0,
+                  ),
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    color: AppColors.main100,
+                    borderRadius: BorderRadius.circular(16.0),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withValues(alpha: 0.1),
+                        blurRadius: 6,
+                        offset: const Offset(0, 2),
+                      ),
+                    ],
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: [
+                          FaIcon(FontAwesomeIcons.chartLine),
+                          SizedBox(width: 8.0),
+                          Text(
+                            'Average',
+                            style: TextStyle(
+                              fontSize: 24.0,
+                              color: AppColors.gray800,
+                              fontFamily: 'Pretendard',
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 40.0),
+                      DataComponent(data: 30, type: SensorType.temperature),
+                      DataComponent(data: 26, type: SensorType.moisture),
+                      DataComponent(data: 49, type: SensorType.sunlight),
+                    ],
+                  ),
+                ),
+              ),
+              SizedBox(height: 40.0),
               NodeCardWidget(
                 name: 'NODE1945241',
                 temparature: 28,

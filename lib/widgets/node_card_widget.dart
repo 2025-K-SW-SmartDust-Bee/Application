@@ -48,7 +48,7 @@ class NodeCardWidget extends StatelessWidget {
               name,
               style: TextStyle(
                 fontSize: 24.0,
-                color: AppColors.gray900,
+                color: AppColors.gray800,
                 fontFamily: 'Pretendard',
                 fontWeight: FontWeight.w500,
               ),
