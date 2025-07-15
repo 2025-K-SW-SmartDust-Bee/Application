@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:smartdust/screens/home_screen.dart';
+import 'package:smartdust/screens/analysis_screen.dart';
 import 'package:smartdust/screens/nav_screen.dart';
 
 void main() {
@@ -12,15 +12,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      initialRoute: NavScreen.id,
-      routes: {
-        HomeScreen.id: (context) => const HomeScreen(),
-        NavScreen.id: (context) => const NavScreen(),
-      },
+      home: NavScreen(),
     );
   }
 }

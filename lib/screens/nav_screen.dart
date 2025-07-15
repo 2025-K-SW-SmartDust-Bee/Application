@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:smartdust/screens/home_screen.dart';
+import 'package:smartdust/screens/analysis_screen.dart';
+import 'package:smartdust/screens/today_screen.dart';
 import 'package:smartdust/widgets/bottom_nav_bar.dart';
 
 class NavScreen extends StatefulWidget {
@@ -13,11 +14,7 @@ class NavScreen extends StatefulWidget {
 class _NavScreenState extends State<NavScreen> {
   int _selectedIndex = 0;
 
-  final List<Widget> _screens = const [
-    HomeScreen(),
-    HomeScreen(),
-    HomeScreen(),
-  ]; // 다른 스크린 파일 생성시 홈 스크린 지우고 새 스크린 추가.
+  final List<Widget> _screens = const [TodayScreen(), AnalysisScreen()];
 
   void _onTap(int index) {
     setState(() {
