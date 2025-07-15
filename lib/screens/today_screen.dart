@@ -4,7 +4,7 @@ import 'package:smartdust/models/month_type.dart';
 import 'package:smartdust/models/sensor_type.dart';
 import 'package:smartdust/themes/colors.dart';
 import 'package:smartdust/widgets/default_appbar.dart';
-import 'package:smartdust/widgets/node_card.dart';
+import 'package:smartdust/widgets/node_card_widget.dart';
 
 class TodayScreen extends StatefulWidget {
   static String id = 'analysis-screen';
@@ -48,23 +48,11 @@ class _TodayScreenState extends State<TodayScreen> {
   SensorType? selectedSensor = SensorType.temperature;
   MonthType? selectedMonth = MonthType.july;
 
-  void _selectSensor(SensorType sensor) {
-    setState(() {
-      selectedSensor = sensor;
-    });
-  }
-
-  void _selectMonth(MonthType month) {
-    setState(() {
-      selectedMonth = month;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.gray25,
-      appBar: DefaultAppBar(title: 'Realtime Data', isHome: true),
+      appBar: DefaultAppBar(title: 'Today', isHome: true),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
         child: SingleChildScrollView(
@@ -82,21 +70,21 @@ class _TodayScreenState extends State<TodayScreen> {
                 ),
               ),
               SizedBox(height: 20.0),
-              NodeCard(
+              NodeCardWidget(
                 name: 'NODE1945241',
                 temparature: 28,
                 moisture: 14,
                 sunlight: 45,
               ),
               SizedBox(height: 16.0),
-              NodeCard(
+              NodeCardWidget(
                 name: 'NODE4553912',
                 temparature: 29,
                 moisture: 16,
                 sunlight: 49,
               ),
               SizedBox(height: 16.0),
-              NodeCard(
+              NodeCardWidget(
                 name: 'NODE3095723',
                 temparature: 30,
                 moisture: 7,
